@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Song Downloader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="floating-particles" id="particles"></div>
+
+    <div class="container">
+        <div class="app-header">
+            <h1>🎵 Spotify Downloader</h1>
+            <p>Download your favorite songs with ease</p>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ This tool is for educational purposes only. Please respect copyright laws and artist rights.
+            <br><strong>Note:</strong> You need a valid RapidAPI key to download songs.
+        </div>
+
+        <div class="api-config">
+            <h3>🔑 API Configuration</h3>
+            <input type="text" id="rapidApiKey" placeholder="Enter your RapidAPI key here..." />
+            <input type="text" id="rapidApiHost" placeholder="API Host (optional)" value="spotify-scraper.p.rapidapi.com" />
+            <button class="save-btn" onclick="saveApiConfig()">Save Configuration</button>
+        </div>
+
+        <div class="download-form">
+            <div class="input-group">
+                <label for="spotifyUrl">Spotify Song URL</label>
+                <input 
+                    type="url" 
+                    id="spotifyUrl" 
+                    placeholder="https://open.spotify.com/track/..."
+                    required
+                >
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" id="fetchBtn" onclick="fetchSongInfo()">
+                    <span id="fetchText">Get Song Info</span>
+                </button>
+                <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
+            </div>
+
+            <div class="song-info" id="songInfo">
+                <div class="song-details">
+                    <div class="song-artwork" id="artwork">🎵</div>
+                    <div class="song-meta">
+                        <h3 id="songTitle">Song Title</h3>
+                        <p id="songArtist">Artist Name</p>
+                        <p id="songAlbum">Album Name</p>
+                        <p id="songDuration">Duration</p>
+                    </div>
+                </div>
+                
+                <div class="quality-selector">
+                    <label>Audio Quality:</label>
+                    <div class="quality-options">
+                        <div class="quality-option" data-quality="128" onclick="selectQuality(this)">128 kbps</div>
+                        <div class="quality-option selected" data-quality="320" onclick="selectQuality(this)">320 kbps</div>
+                        <div class="quality-option" data-quality="flac" onclick="selectQuality(this)">FLAC</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="downloadBtn" onclick="downloadSong()">
+                    <span id="downloadText">Download Song</span>
+                </button>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="status-message" id="statusMessage"></div>
+        </div>
+
+        <div class="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3>High Quality Audio</h3>
+                    <p>Download songs in multiple quality options including 320kbps MP3 and FLAC lossless format.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Downloads</h3>
+                    <p>Lightning-fast download speeds with real-time progress tracking and optimized servers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Responsive design that works perfectly on all devices - mobile, tablet, and desktop.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔑</div>
+                    <h3>API Integration</h3>
+                    <p>Secure RapidAPI integration with multiple backup sources for reliable downloads.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Rich Metadata</h3>
+                    <p>Automatically fetches album artwork, artist info, duration, and other track details.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Safe & Secure</h3>
+                    <p>No malware, no ads, no tracking. Your privacy and security are our top priorities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script src="main.js"></script>
+</body>
+</html>
